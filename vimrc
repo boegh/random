@@ -9,7 +9,6 @@ set ignorecase
 set nostartofline
 set laststatus=2
 
-set mouse=a
 set backspace=2
 
 syntax on
