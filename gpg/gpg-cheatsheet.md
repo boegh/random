@@ -1,16 +1,16 @@
 # GPG cheatsheet
 
 ### Generating
-```gpg --gen-key
-```
+`gpg --gen-key`
+
 (note: If you have entropy issues on Linux, install rng-tools and run `sudo rngd -r /dev/urandom`
 
 ### Listing
-```gpg --list-key
-```
+`gpg --list-key`
+
 Or
-```gpg -K --keyid-format long --with-colons --with-fingerprint
-```
+
+`gpg -K --keyid-format long --with-colons --with-fingerprint`
 
 
 ### Exporting
