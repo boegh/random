@@ -1,16 +1,22 @@
 # GPG cheatsheet
 
 ### Generating
-`gpg --gen-key`
+```
+gpg --gen-key
+```
 
 (note: If you have entropy issues on Linux, install rng-tools and run `sudo rngd -r /dev/urandom`
 
 ### Listing
-`gpg --list-key`
+```
+gpg --list-key
+```
 
 Or
 
-`gpg -K --keyid-format long --with-colons --with-fingerprint`
+```
+gpg -K --keyid-format long --with-colons --with-fingerprint
+```
 
 
 ### Exporting
@@ -21,10 +27,14 @@ gpg --export-secret-keys AB12CD34 >> ./keys.gpg
 ```
 
 #### Export public key as ASCII-armored
-`gpg --armor --export AB12CD34`
+```
+gpg --armor --export AB12CD34
+```
 
 #### Export private key as ASCII-armored (needed by Mailvelope and probably also other apps)
-`gpg --armor --export-secret-key "my@email.tld" > my.key`
+```
+gpg --armor --export-secret-key "my@email.tld" > my.key
+```
 
 #### Export all private + public keys held
 ```
@@ -64,4 +74,6 @@ gpg --keyserver hkp://pgp.mit.edu --search-keys <e-mail>
 
 
 ### No password prompt?
-`export GPG_TTY=\`tty\``
+```
+export GPG_TTY=`` `tty` ``
+```
