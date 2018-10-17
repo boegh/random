@@ -15,26 +15,27 @@ Or
 
 ### Exporting
 #### Export private + public keypair
-```gpg --export AB12CD34 > ./keys.gpg
+```
+gpg --export AB12CD34 > ./keys.gpg
 gpg --export-secret-keys AB12CD34 >> ./keys.gpg
 ```
 
 #### Export public key as ASCII-armored
-```gpg --armor --export AB12CD34
-```
+`gpg --armor --export AB12CD34`
 
 #### Export private key as ASCII-armored (needed by Mailvelope and probably also other apps)
-```gpg --armor --export-secret-key "my@email.tld" > my.key
-```
+`gpg --armor --export-secret-key "my@email.tld" > my.key`
 
 #### Export all private + public keys held
-```gpg --export > ./allkeys.gpg
+```
+gpg --export > ./allkeys.gpg
 gpg --export-secret-keys >> ./allkeys.gpg
 ```
 
 
 ### Adding email to existing key
-```gpg --edit-key AB12CD34
+```
+gpg --edit-key AB12CD34
 gpg> adduid
 gpg --edit-key AB12CD34 trust 
 ```
@@ -42,12 +43,14 @@ gpg --edit-key AB12CD34 trust 
 
 ### Keyservers
 #### Update to keybase & key server
-```keybase push --update
+```
+keybase push --update
 gpg --keyserver hkp://pgp.mit.edu --send-keys AB12CD34
 ```
 
 #### Import from keybase or keyserver
-```keybase track <user>
+```
+keybase track <user>
 gpg --keyserver hkp://pgp.mit.edu --search-keys <e-mail>
 ```
 
@@ -61,4 +64,4 @@ gpg --keyserver hkp://pgp.mit.edu --search-keys <e-mail>
 
 
 ### No password prompt?
-`export GPG_TTY=`tty``
+`export GPG_TTY=\`tty\``
