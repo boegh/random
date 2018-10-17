@@ -67,13 +67,17 @@ gpg --keyserver hkp://pgp.mit.edu --search-keys <e-mail>
 
 ### GPG for encryption
 #### encrypt
-`gpg --output <encrypted file name> --encrypt --recipient my@email.tld <raw file name>`
+```
+gpg --output <encrypted file name> --encrypt --recipient my@email.tld <raw file name>
+```
 
 #### decrypt
-`gpg --output <raw file name> --decrypt <encrypted file name>`
+```
+gpg --output <raw file name> --decrypt <encrypted file name>
+```
 
 
 ### No password prompt?
 ```
-export GPG_TTY=`` `tty` ``
+export GPG_TTY=`tty`
 ```
