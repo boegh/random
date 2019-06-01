@@ -1,0 +1,10 @@
+# convert mkv files to gif fil /mnt/c/Windows/System32/ipconfig.exees
+# requires both ffmpeg (from package ffmpeg) and convert (from package imagemagick-6.q16)
+
+mkv2gif() {
+    if [ -f "$@" ]; then
+	FILE="$@"
+	FILENAME=${FILE%.*}
+	/usr/bin/ffmpeg -i "$FILE" -vf scale=640:-1 -r 15 -f image2pipe -vcodec ppm - | /usr/bin/convert-im6.q16 -delay 5 -loop 0 - "$FILENAME.gif"
+    fi
+}

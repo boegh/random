@@ -1,0 +1,14 @@
+atom() {
+    if RWSLPATH=$(wslpath -w $(realpath $1) 2>&1); then
+	if [[ -n $RWSLPATH ]]; then
+	    '/mnt/c/Users/heb/AppData/Local/atom/atom.exe' $RWSLPATH &
+	    disown
+	else
+	    echo "Error code: $?"
+	    echo "RWSLPATH: $RWSLPATH"
+	fi
+    else
+	echo -e "\033[0;31mERROR\033[0m: $RWSLPATH"
+	echo -e "       (Are you sure that $1 is OUTSIDE of WSL root?)"
+    fi
+}

@@ -1,0 +1,17 @@
+# tc is used to start TotalCommander: a dual-pane filemanager for Windows - https://www.ghisler.com/
+# This command uses the current directory ($(pwd)) for application launch
+
+tc() {
+    if RWSLPATH=$(wslpath -w $(realpath $(pwd)) 2>&1); then
+	if [[ -n $RWSLPATH ]]; then
+	    '/mnt/c/Program Files/totalcmd/TOTALCMD64.exe' $RWSLPATH &
+	    disown
+	else
+	    echo "Error code: $?"
+	    echo "RWSLPATH: $RWSLPATH"
+	fi
+    else
+	echo -e "\033[0;31mERROR\033[0m: $RWSLPATH"
+	echo -e "       (Are you sure that $1 is OUTSIDE of WSL root?)"
+    fi
+}

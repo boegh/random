@@ -1,0 +1,7 @@
+# retrieve public keys from Keybase and store them in GPG keyring
+# See https://github.com/keybase/keybase-issues/issues/1396 for more info
+
+
+k2g() {
+    /usr/bin/wget -qO - https://keybase.io/$1/key.asc | /usr/bin/gpg --import -
+}

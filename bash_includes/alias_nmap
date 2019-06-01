@@ -1,0 +1,7 @@
+# nmap on WSL currently doesn't work as AF_PACKET needed by nmap (and other tools like wireshark) is not yet implemented.
+# solution: Install the Windows version and alias to it from WSL
+# See https://github.com/Microsoft/WSL/issues/1349
+
+nmap() {
+    /mnt/c/Program\ Files\ \(x86\)/Nmap/nmap.exe $@
+}

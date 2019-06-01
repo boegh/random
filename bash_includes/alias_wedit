@@ -1,0 +1,17 @@
+# wedit is used to start Notepad++: an advanced text-editor for Windows - https://notepad-plus-plus.org/
+# This command takes the file that the user wants to open as a parameter ($1) for application input
+
+wedit() {
+    if RWSLPATH=$(wslpath -w $(realpath $1) 2>&1); then
+	if [[ -n $RWSLPATH ]]; then
+	    '/mnt/c/Program Files (x86)/Notepad++/notepad++.exe' $RWSLPATH &
+	    disown
+	else
+	    echo "Error code: $?"
+	    echo "RWSLPATH: $RWSLPATH"
+	fi
+    else
+	echo -e "\033[0;31mERROR\033[0m: $RWSLPATH"
+	echo -e "       (Are you sure that $1 is OUTSIDE of WSL root?)"
+    fi
+}

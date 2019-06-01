@@ -1,0 +1,11 @@
+# Start syslog - remember to add the following to sudoers:
+# 	$USER        ALL = NOPASSWD: /usr/sbin/service cron *
+# and to put user into sudoers group:
+# 	usermod -a -G crontab $USER
+
+/usr/bin/sudo /usr/sbin/service rsyslog status > /dev/null
+
+if [ $? -eq 3 ]
+then
+    /usr/bin/sudo /usr/sbin/service rsyslog start
+fi

@@ -1,0 +1,10 @@
+# convert a png to Windows icon - useful for Windows shortscuts to WSL executables
+# Look in /usr/share/icons/ or /usr/share/<app name (-ish)>/icons
+# requires imagemagick and puts the Windows icons in %userprofile%\bin.icon\.
+
+winicon() {
+    if [ -f "$1" ]; then
+	FILENAME=$(basename $1)
+	/usr/bin/convert $1 -define icon:auto-resize=64,48,32,16 ~/WinHome/bin.icon/$FILENAME.ico
+    fi
+}

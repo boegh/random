@@ -1,0 +1,5 @@
+# ytmp3dl is a regular alias with a parameter (youtube video to download as mp3) for youtube-dl - https://github.com/rg3/youtube-dl/
+
+ytmp3dl() {
+    /usr/local/bin/youtube-dl  --extract-audio --audio-format mp3 $1
+}

@@ -1,0 +1,4 @@
+stc() {
+    echo $@ >> ~/Nørderier/memorable_commands.txt
+    echo "" >> ~/Nørderier/memorable_commands.txt
+}
