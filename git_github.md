@@ -6,7 +6,7 @@
 % git config --global user.email hest@hest.hest
 % git config --global credential.helper cache
 ```
-2. Create repository on Github ((https://github.com/boegh?tab=repositories )[https://github.com/boegh?tab=repositories])
+2. Create repository on Github [https://github.com/boegh?tab=repositories](https://github.com/boegh?tab=repositories)
 3. Clone repository: `git clone https://github.com/boegh/repository`
 4. `% git add random.file`
 5. `% git commit -m "Random"`
