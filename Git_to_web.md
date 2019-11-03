@@ -8,3 +8,5 @@
     GIT_WORK_TREE=/var/www/virtual/$name/published git checkout -f
 ```
 4. Clone the (now empty) repository for initialisation: `git clone ssh://user@$host/var/www/virtual/$name/$name.git`
+
+https://community.atlassian.com/t5/Sourcetree-questions/How-to-create-a-GIT-repository-in-existing-folder-full-of-files/qaq-p/264461
