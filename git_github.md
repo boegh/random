@@ -4,7 +4,7 @@
 ```
 % git config --global user.name "Henrik"
 % git config --global user.email hest@hest.hest
-% git config --global credential.helper cache
+% git config --global credential.helper store
 ```
 2. Create repository on Github [https://github.com/boegh?tab=repositories](https://github.com/boegh?tab=repositories)
 3. Clone repository: `git clone https://github.com/boegh/repository`
