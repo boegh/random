@@ -1,0 +1,44 @@
+Start:
+
+  Input trigger:
+
+  Insert row:
+
+    Date:
+    formatDateTime(AddHours(UTCNow(),+1),'dd-MM-yyyy')
+
+    Start:
+    formatDateTime(AddHours(UTCNow(),+1),'HH:mm')
+
+___END___
+
+
+Slut:
+
+  Input trigger:
+
+  Get rows:
+
+  Compose:
+    last(body('Get_rows')?['Value'])?['ItemInternalId']
+
+  Get row
+    Row id: Compose_output
+
+  Condition 2
+    Slut contains ":"
+      {
+        Insert row
+      } else {
+        Row id: Compose_output
+        Slut: formatDateTime(AddHours(UTCNow(),+1),'HH:mm')
+        Duration: concat('=ROUND((INDIRECT(ADDRESS(ROW(),COLUMN()-1))-', 'INDIRECT(ADDRESS(ROW(),COLUMN()-2)))*60, 2)')
+
+
+
+      }
+
+
+
+
+  }
