@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# I use this small script (placed in /etc/network/if-up.d/) to send a notification (which draws upon the IFTTT app) with the IP-adress and the name of the interface brought up (magic variable $IFACE), when an interface is brought up on select machines.
+# The IFTTT script gives a notification in the IFTTT app on a smartphone
+
+IFTTT_KEY=<IFTTT Key goes here>
+IFTTT_ACTION=<IFTTT action name goes here>
+HOSTNAME=$(/bin/hostname)
+IP=$(/sbin/ip route get 8.8.8.8 | /usr/bin/awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
+
+/usr/bin/lynx -dump "https://maker.ifttt.com/trigger/$IFTTT_ACTION/with/key/$IFTTT_KEY?value1=$HOSTNAME%20%28$IFACE%29&value2=$IP"
+
+exit 0
