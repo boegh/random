@@ -6,6 +6,7 @@
 % git config --global user.email hest@hest.hest
 % git config --global credential.helper store
 ```
+(use cache instead of store to do it on a per session basis)
 2. Create repository on Github [https://github.com/boegh?tab=repositories](https://github.com/boegh?tab=repositories)
 3. Clone repository: `git clone https://github.com/boegh/repository`
 4. `% git add random.file`
