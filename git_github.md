@@ -26,7 +26,7 @@
     `./published/`
     `./$name.git/`
 2. In `$name.git` do `git init --bare'`
-3. In `$name.git/hooks/post-receive` add the following:
+3. In `$name.git/hooks/post-update` add the following:
 ```
     #!/bin/sh
     GIT_WORK_TREE=/var/www/virtual/$name/published git checkout -f
