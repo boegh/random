@@ -1,0 +1,86 @@
+#!/usr/bin/python3
+
+import getopt
+import fnmatch
+import os.path
+import re
+import sys
+import click
+
+workdir = '/home/boegh/_home/_lex/'
+# editor = '/usr/bin/gedit'
+
+sdisplay = ''
+sedit = ''
+slist = ''
+ssearch = ''
+
+try:
+   opts, args = getopt.getopt(sys.argv[1:],'hd:e:l:s:',['display=','edit=','list=','search='])
+   if len(opts) == 0:
+      if len(sys.argv[1]) > 1:
+#         slist = str(sys.argv[1])
+         sdisplay = str(sys.argv[1])
+      else:
+         print('''No (usable) options given. Use \`lex -h\` for help. Good bye...''')
+         sys.exit()
+except getopt.GetoptError as err:
+   print('''ERROR: ''' + str(err))
+   sys.exit(2)
+
+for opt, arg in opts:
+   if opt == '-h':
+      print('''lex -d <title>   : Display contents of <title>''')
+      print('''lex -e <title>   : Edit <title>''')
+      print('''lex -l <keyword> : List all articles that contains <keyword> in title''')
+      print('''lex -l -all      : List all articles''')
+      print('''lex -s <keyword> : Search for all articles that contains <keyword> in text''')
+      print('''NOTE: Only THE FIRST function is used in the order display-edit-list-search!''')
+      sys.exit()
+   elif opt in ('-d', '--display'):
+      sdisplay = arg
+   elif opt in ('-e', '--edit'):
+      sedit = arg
+   elif opt in ('-l', '--list'):
+      slist = arg
+   elif opt in ('-s', '--search'):
+      ssearch = arg
+
+if len(sdisplay) > 0:
+   try:
+      f = open(workdir + sdisplay)
+      print('''=====     =====     =====     =====''')
+      for line in f:
+         print(line, end='')
+      print('''=====     =====     =====     =====''')
+      f.close()
+   except:
+      print('''File does not exist or is not accessible (permissions?)''')
+      sys.exit(2)
+
+   sys.exit()
+
+if len(sedit) > 0:
+   try:
+      click.edit(filename=workdir + sedit)
+   except:
+      print('''Something went wrong. Can't open editor for "''' + sedit + '''".''')
+      sys.exit(2)
+
+   sys.exit()
+
+if len(slist) > 0:
+   lmatch = ''
+   if slist == '-all':
+      lmatch = '*'
+   else:
+      lmatch = '*'+slist+'*'
+   for file in sorted(os.listdir(workdir)):
+      if fnmatch.fnmatch(file, lmatch):
+         print('''- ''' + file)
+   print('''=====     =====     =====     =====''')
+   sys.exit()
+
+if len(ssearch) > 0:
+   print('''TO BE DONE: Searching articles for "''' + ssearch + '''"''')
+   sys.exit()
