@@ -47,6 +47,7 @@ for opt, arg in opts:
       ssearch = arg
 
 if len(sdisplay) > 0:
+   # TODO insert redirect function similar to that of Media Wiki, i.e. lex samba shows content of smb
    try:
       f = open(workdir + sdisplay)
       print('''=====     =====     =====     =====''')

@@ -1,0 +1,68 @@
+mission "1P 1A"
+	name "Ms. Anna"
+	description "Transport Ms. Anna to the <system> system"
+	passengers 1
+	cargo "luggage" 1
+	source
+		near Sol 1
+	destination 
+		near Algorel 2
+	on complete
+		payment 20000
+		dialog
+			`"Thank you, <first>. <ship> is certainly a fine ship. May you have many pleasant and prosperous tavels in it. Good bye" she says and with that she leaves.`
+	on offer
+		conversation
+			`As you sit down in the Spaceport's cafe, a tall, red-haired woman approaches you and ask: "Are you the captain of <ship>?"`
+			choice
+				`	You reply with pride: "Sure am. Need something moved?"`
+					goto yes1
+				`	"It is, but I would like to enjoy my food in peace"`
+					decline
+
+			label yes1
+			`	She sits down next to you and says "My name is Anna Alford and I would like to be transported to <planet> in the <system> system. I can pay you 20,000 credits for it."`
+			choice
+				`	"You have yourself a ride. Meet me at the ship in one hour."`
+					accept
+				`	"Oh sorry. I need something that pays a bit more."`
+					decline
+
+mission "1P 1B"
+	name "Mr. Barth"
+	description "Mr. Barth needs to go to planet <planet>"
+	deadline
+	passengers 1
+	cargo "engine parts" 3
+	source
+		near Sol 1
+	destination 
+		near Algorel 2
+	on complete
+		payment 25000
+		dialog
+			`As mr. Barth leaves he says: "thank you, Captain <last>. It has been a most pleasant trip. Thank you."`
+	on offer
+		conversation
+			`As you the Spaceport's souvenir shop, a short, bald man approaches you and ask: "Are you the captain of <ship>?"`
+			choice
+				`	With pride you replies: "It is. What can I do for you?"`
+					goto yes1
+				`	"It is, but I am not currently for hire, if that is what you are considering?"`
+					goto no1
+
+			label yes1
+			`	"My name is Barth Brunt and I need to go to the <system> system, with some engine parts for <planet>. I can pay you 25,000 credits for the trip, if you can get me and my engine parts there before <date>."`
+			choice
+				`	"No problem. Meet me at the ship in one hour."`
+					accept
+				`	"Oh sorry. I don't think I can make that deadline right now."`
+					decline
+
+			label no1
+			`	He looks dissapointed and says "That is a shame. My name is Barth and I am an engine repair specialist. I really need to be on <planet> in the <system> system before <date>. I can pay you 25,000 credits for the trip."`
+			choice
+				`	"No problem. Meet me at the ship in one hour."`
+					accept
+				`	"Oh sorry. I don't think I can make that deadline right now."`
+					decline
