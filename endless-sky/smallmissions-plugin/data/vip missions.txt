@@ -1,0 +1,384 @@
+# This is a mission file for Endless Sky.
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+#
+# This file is provided as is...
+
+mission "VIP 1"
+	name "Baron Gjian"
+	description "Transport a baron with his entourage to <destination>."
+	passengers 18
+	cargo "luggage" 30
+	source "Ingot"
+	destination "New Holland"
+	on complete
+		payment 150000
+		dialog
+			`The baron complements you profoundly: "My. My. My. My dear Captain <last>. I must say that such a steady hand in such a relatively unexperienced captain is quite the rarity in these days. Quite the rarity indeed. I'll tell you that in my younger days I dabbled a bit in piloting, but I never - NEVER - got anywhere nearly as good as you are. Here is your 150000 credits. You have certainly earned every single one of them. Have you by the way ever seen New Portland at this time of year? I hear it is quite pleasant and was considering going there sometime soon." With that he leaves and you are now considering going to New Portland...`
+	on offer
+		conversation
+			`As you leave your ship a well-dressed elderly man approaches you, and ask you if you are the captain of <ship>?`
+			choice
+				`	You reply (with a small amount of pride) "Sure it is. What of it?"`
+				`	You are anoyed and tell him that of course it is, but that you are very hungry and that glargh-stew is on sale in the cafeteria and leaves.`
+					decline
+			`	The man introduces himself: "I am Skverk. First Servant of His Highness Baron Gjian. The Baron is in urgent need of a transport to New Holland. We were on our way there for the Baron to study the famous dikes, and landed on Ingot for refuelling, when a our previous captain unfortunately fell into a spell of bad luck, and had his ship confiscated by the local authorities. Personally I never liked the man, he drank too much and bathed to little, but the Baron was quite fond of him. And while the man was a bit gruff, he was always very discreet about transporting His Highness the Baron. Should you be interested the Baron would require a similar discretion for you. His Highness the Baron will require transport for himself and 17 servants, and their combined luggage of 30 pieces. Will you be able to perform such a task under these conditions?"`
+			choice
+				`	"Of course. In fact I am famous for my discretion. We can be ready to leave when you are."`
+					goto ofcourse
+				`	"Sorry. Nobility is not my thing."`
+					goto sorry
+			label ofcourse
+			`	You have barely finished the sentence when a large group of people start to fill your cargo hold with large suitcases in purple, red and blue. Skverk informs you that you and your crew must bathe daily during the trip, which you accept, while you find yourself staring at a voluminous man, whom you correctly guess is the Baron, with dark hair, that emerges from a door in a nearby building. The Baron is followed by a slim, younger man holding an umbrella over the Baron's head. As he get closer, you notices that his fingers and ears are covered in jewels. Before you know it you are in the front of your ship's controls and on the way. And you never got any of that glargh-stew...`
+				launch
+			label sorry
+			`	The man stares at you, lets out a sigh and dramatically tells you that "the Baron is not used to be turned down. This are sad times." You shake your head and head for that glargh-stew.`
+				decline
+
+
+mission "VIP 2"
+	name "Lady Bucksworth"
+	description "Lady Bucksworth urgently needs to go to the Earth."
+	deadline
+	passengers 2
+	cargo "luggage" 2
+	to offer
+		has "VIP 1: done"
+	source "New Portland"
+	destination "Earth"
+	on complete
+		payment 175000
+		dialog
+			`Quickly after landing Lady Bucksworth's maid hand you a credit chip containing 175000 credits, as the Lady herself is leaving <ship> you notice two men waiting for her. They greet warmly and the Lady is eagerly explaining something to them as they walk away...\n While you are wondering how they knew when and where to meet the Lady, the maid tells you: "Thank you <first>. It was good meeting you and I hope we meet again. Safe travels.\nIf you feel altruistic, I have a friend on Mars who really could use your help. I would consider this a personal favour, and I am sure the Lady would also." With that she runs off and catches up with the Lady and the two men.`
+	on offer
+		conversation
+			`Sitting in the spaceport canteen, enjoying a sample of the local brew, a blonde woman in a very colorful and eye-catching dress sits down at your table: "Are you Captain <last> by any chance?" she asks.`
+			choice
+				`	"Yes. Do I know you?"`
+					goto bucksworth
+				`	You are not in the mood to talk, so you politely answers "No, and I am waiting for someone."`
+					goto waiting
+
+			label bucksworth
+			`	The woman presents herself as Lady Bucksworth. "I urgently need to go to the Earth to talk to the Parliament. The situation for the poor scientists on this planet is not sustainable, and as I always tell my colleagues in Parliament: Where would the Republic be without science? I'll tell you. Nowhere. Just a bunch of people throwing rocks at each other.\nMy dear old friend, Baron Gjian spoke very warmly of your services, so when I saw your ship on the landing pad, I came to find you right away. Can you please take me to the Earth? You will be well rewarded.`
+			choice
+				`	"And exactly what kind of reward are we talking about?"`
+					goto reward
+				`	"Sure. Let me finish this drink, and then we can get going."`
+					goto beer
+				`	"Sorry. The Earth is not really in my direction. Nice meeting you." (and now you are wondering if they have glargh-stew on offer on Ingot...)`
+					decline
+
+			label reward
+			`	"There will be 175000 credits for you once I am on Earth. It will be just me and my maiden and we don't take up a lot of space." she says.`
+			choice
+				`	"That seems like a fair price. You have a deal."`
+					goto beer
+				`	"That is a good amount of money. To good to be true, so I think I will respectfully decline this. Have a nice day.`
+					decline
+
+			label waiting
+			`	"Too bad" she replies. "I had a wellpaid job for captain <last> and when I saw <ship> on the landing pad, I hoped to find <last> in here. Sorry for the disturbance and enjoy your brew." With that she leaves your table and go sit at another one, adressing the person sitting there.`
+			decline
+
+			label beer
+			`	You finish your brew, and walk the Lady out to your ship. When you arrive there, the Lady's maid is already waiting at <ship>, which makes you wondering how she knew that you would accept the job.`
+				accept
+
+mission "VIP 3"
+	name "The servant"
+	description "This servant needs to go to Harmony for a family emergency."
+	landing
+	passengers 1
+	to offer
+		has "VIP 2: done"
+	source "Mars"
+	destination "Harmony"
+	on complete
+		payment 5600
+		dialog
+			`On his way out, Mklene says: "Thank you for your kindness, captain <last>. I will be sure to tell Breean about your good heart." With that he leaves the airport.`
+	on offer
+		conversation
+			`"You are <first> <last>" you hear a man call out, the moment you enter the terminal facility.`
+			choice
+				`	"Maybe?"`
+				`	"Sorry. I think you have the wrong person."`
+					decline
+			`	"Breean told me about you. Said that you mi'te help me getting back to my folks on Harmony" he says fast with a bit of a funny accent you haven't heard before.`
+			choice
+				`	"Wait? What? Breean? What are you talking about?"`
+					goto breean
+				`	"Harmony? Breean? Friend, I think you need help. And from somebody who is not me. There is a medical facility right over there.`
+					decline
+			label breean
+			`	"Yes. Breean" he says. Almost shouting. "The maid of Lady Bucksworth. She told me that you could perhaps help me come home to Harmony.\n My parents have both become very ill, and has no income. Very ill indeed. They won't accept credits transferred electronically, so I can't transfer my credits to them. I have to go there myself and work to make sure they have food and medical care."`
+			choice
+				`	"It might be doable. How much can you offer?."`
+					goto offer
+				`	"I feel sorry for you, Friend. By I can't help you right now. Sorry.`
+					decline
+			label offer
+			`	"5600 credits. I know it is very little, but it is all I have.`
+			choice
+				`	"I don't even think that 5600 credits can cover my costs. But maybe we can pick some other jobs along the way..."`
+					goto otherjobs
+				`	"5600 doesn't even cover my costs. Sorry. Try to find somebody with a smaller ship. There you may get more lucky."`
+					decline
+			label otherjobs
+			`	"I will take anything" he says eagerly. "Getting there late is better than nothing at all. And if I tell my parents that I am on the way, I am sure they can get some help from their neighbours until I arrive."`
+			choice
+				`	"Okay. Get your stuff and find <ship>. I'll see if I can find something else and then we depart in a few hours. Be there or I leave you behind."`
+					accept
+				`	"Ach. Sorry. My money situation is a bit tight, and I need all the space I can have."`
+					decline
+
+
+mission "VIP 4"
+	name "Jane Smith"
+	description "Transport documents for Jane Smith"
+	landing
+	cargo "cannisters of glarghian wood worms" 15
+	illegal 35000
+	to offer
+		has "VIP 3: done"
+	source
+		attributes south farming
+		not planet "Harmony"
+	destination "Mars"
+	on complete
+		payment 65000
+		dialog
+			`As you land a crew of skilled workers, pick up the canisters of glarghian wood worms up in record speed. You quietly suspect that they are not ordinary spaceport workers. One of them informs you, that if you are open to transport anything, visiting the Spaceport's rock and stone outlet, may be a good idea...`
+	on offer
+		conversation
+			`<first>! Darling!" you hear a voice call out, as you enter the local souvenir shop. You turn around a see Lady Bucksworth running towards you with open arms. Unlike last time, she is now dressed in modest and very unobtrusive garments.`
+			choice
+				`	"Who are you?" you reply, pretending not to know her.`
+					goto ba
+				`	"Lady Bucksworth?" you ask confused and surprised.`
+					goto bb
+
+			label ba
+			`	"Good answer, my darling" she replies. "I am here as Jane Smith."`
+			choice
+				`	"Very well, Jane. What can I do for you?" you reply with caution.`
+					goto da
+				`	"I don't know any Jane Smith" you reply and hurry away.`
+					goto fb
+
+			label bb
+			`	"No. Not today" she replies. "I am here as Jane Smith".`
+			choice
+				`	"Jane Smith? Isn't that a bit cliche?`
+					goto ca
+				`	"I see. How are you Jane?" you replies cautiosly.`
+					goto da
+
+			label ca
+			`	She laughs. "It is. It is indeed. In fact so cliche that no one would think if it not being my real name" she replies.`
+			choice
+				`	"I see. Well then: How are you doing, Jane?" you say, slightly suspicious.`
+					goto da
+				`	Okay. What is it you need transported, Jane?`
+					goto ea
+
+			label da
+			`	"I understand your caution, captain" she replies formally. "It serves you well. Especially as I am concealing my identity here. But I am in fact Lady Bucksworth, and I am here on an investigative mission. You can't tell anybody about it. I need your help with a small transport job. We will pay you 65000 credits for it."`
+			choice
+				`	"Okay. What is it you need transported?"`
+					goto ea
+				`	"Sorry. I am not really in the market for small transport jobs these days."`
+					goto fb
+
+			label ea
+			`	"I knew we could rely on you" she replies. "Breean told me about what you did for her friend. You truly have a good heart. We have concealed some secret documents within canisters of glarghian wood worms. The government of Ingot has recently made export of glarghian wood worms illegal, so any off planet transport of them, will be fined. They are still a delicacy on Earth, so should you be caught you'll have a plausible explanation. Secrets within secrets. The documents are proofs of a conspiracy between three large coorporations. Should they succeede with their intent... well then we might see billions of people becoming bankrupt. The situation around here is already unstable. The navy is being restrained in their actions and piracy is a massive problem. There is no forseeing what will happen if these companies succede with their sinister schemes, but I can guarantee you that it won't be good.`
+			choice
+				`	"I could have some glargh-stew in fact" you say. "Fine by me. Let's go."`
+					goto fa
+				`	"I am truly sorry but I can't be caught carrying illegal items these days."`
+					goto fb
+
+			label fa
+			`	"Thank you" she replies. "The canisters will be loaded onto <ship> later today. Safe journey <first>."`
+				accept
+
+			label fb
+			`	"I am sorry to hear that, <first>. We will find someone else. Don't be a stranger out there, darling" she replies. With that she walks away.`
+				decline
+
+mission "VIP 5"
+	name "Mr. Gjian"
+	description "Transport mr. Gjian and his goods from Mars to Norn"
+	cargo "suitcases" 2
+	to offer
+		has "VIP 4: done"
+	source "Mars"
+	destination "Norn"
+	on complete
+		payment 100000
+		dialog
+			`You let out a sigh as the eel spawn are unloaded from <ship> and consider investing a few thousand credits in air fresheners. As they are done unloading the eel spawn, a man approaches you: "Captain <last>! I have a letter for you" he says, hands you a data chip and leaves again. You go back to your ship to read the chip and find a message from Lady Bucksworth: "<first>, I am in trouble. Please come to Sunracer and pick me up immediately. Will explain when you are here. /Lady B.".`
+	on offer
+		conversation
+			`As you enter the Spaceport, you remember the worker's recommendation to visit the rock and stone outlet. Behind the counter - much to your surprise you find Baron Gijan. "Baron? What are you doing here?" you stutter. He looks at you and then he laughs. "I am not the Baron, but you are not the first one to make that mistake."`
+			choice
+				`	"I see" you reply. "Sorry for the confusion" you continue and leave the outlet again.`
+					goto sorry
+				`	"Really? The likeliness is uncanny" you reply.`
+					goto twin
+
+			label twin
+			`	"That is because the Baron is my twin-brother. Because only one could become the Baron, I have denounced my titles and lordship. I am mr. Gijan."`
+			choice
+				`	"I see. I don't remember the baron mentioning any brothers...`
+					goto brother
+				`	"Aha. Well, nice to meet you."`
+					goto job
+
+			label brother
+			`	"No. He probably wouldn't. Have you flown for my brother?" he asks.`
+			choice
+				`	"Yes sir. You wouldn't happend to have anything that needs to be moved?`
+					goto eelspawn
+				`	"Indeed I have. And he was quite happy with my services, I might add."`
+					goto job
+
+			label job
+			`	He smiles. "Well nice to meet you. I might have a job for you. I am investing in a fish farm on Norn, you see."`
+			choice
+				`	"What do you have for a fish farm?" you ask wondering...`
+					goto eelspawn
+				`	"Sorry - not right now I am afraid."`
+					goto sorry
+
+			label eelspawn
+			`	"Some Grolgian Eel Spawn. They are a delicacy in the Southern Rim and prices are exploding these days" he says with a big smile.`
+			choice
+				`	"Sure no problem. I have never hauled that before, so why not?"`
+					goto good
+				`	"Sorry. I don't really feel like having my ship all stinked up by fish... Nice to meet you, and have a nice day."`
+					goto sorry
+
+			label good
+			`	"Good. Good. I will have them loaded right away. No rush, but the quicker I can get them out of storage the better."`
+			choice
+				`	"<ship> is at your disposal. I will go make sure that it is ready for your eel spawn."`
+					goto thankyou
+				`	"I don't like this rush. And now I am really worried about the stench. Sorry. I can't do it after all."`
+					goto sorry
+
+			label thankyou
+			`	"Thank you" he replies. "The spawn tanks will be loaded right away, and there will be 100,000 credit for you, when you get to Norn."`
+				accept
+
+			label sorry
+			`	"I am sorry to hear that, <first>. Have a nice day, you too.`
+				decline
+
+
+mission "VIP 6"
+	name "Lady Bucksworth 2"
+	description "Lady Bucksworth urgently needs be picked up from Sunracer."
+	landing
+	passengers 18
+	cargo "luggage and scientific equipment" 24
+	to offer
+		has "VIP 5: done"
+	source "Sunracer"
+	stopover "New Portland"
+	destination "Earth"
+
+	on complete
+		payment 175000
+		"reputation: Republic" ++
+		dialog
+			`You are instructed to land on a Parlimentary landing pad. It is shiny and full of plants and colorfull furniture. A security force greets the Lady and the scientists and the ranking officer approaches you. "Lady Bucksworth and the Paliament are grateful for your assistance, Captain." he says and hands you a credits chip worth 175,000 credits. If you have a brig in <ship>, and are interested in another transport job, please go to the Spaceport and seek out mr. Skverk.`
+
+	on offer
+		conversation
+			`As you get out of your ship a small child approaches your ship: "You, <last>?" it asks. As you nod it says: "Lady is by big, yellow crane over there". It points towards a big crane and quickly runs off. You look towards the crane...`
+			choice
+				`	(walk towards it)`
+					goto crane
+				`	(walk away)`
+					goto away
+
+			label crane
+			`	As you get close to the crane, you hear a voice wisper: "<first>. <first>. I am here". You turn around and see Lady Bucksworth. Her clothes are ragged, her eyes looks tired and maybe she has even been beaten by someone.`
+			choice
+				`	"Lady Bucksworth? Are you okay?"`
+					goto areyouokay
+
+			label areyouokay
+			`	She looks at you and say: "No. Not really. You remember those documents concealed within canisters of glarghian wood worms you transported to Mars? Those documents contained some rather disturbing findings by the scientists on New Portland. After I presented the documents in Parliament, somebody has been out to kill me. They almost succeeded. We need to get to New Portland urgently to pick up those 17 scientists and get them to Earth, where they can be protected."`
+			choice
+				`	"Right then. Let's do it!"`
+					accept
+				`	"Sorry. I don't feel like being chased by those people.`
+					decline
+
+			label away
+			`	As you walk away you feel the warmth of the setting sun, and you agree with yourself, that your life just became a bit less complex...`
+				decline
+
+	on stopover
+		dialog `As instructed by Lady Bucksworth, you land in the middle of the night, when the controllers are the most sleepy, under the pretence of having a fractured collar plating due to a meteorstrike. The ground inspector doesn't even leave his shed, but just waves at you from a distance. After 20 minutes in the darkness 17 people approaches your ship from the dark side of the landing area, and gets unboard unseen. 30 minutes later you request clearance to departure and gets it without any fuzz.`
+
+mission "VIP Conclusion"
+	name "VIP Missions: Conclusion"
+	description "Why you shouldn't mix glarghian wood worms and grolgian eel spawn."
+	passengers 5
+	cargo "explosives" 15
+	to offer
+		has "VIP 6: done"
+	source "Earth"
+	stopover "Norn"
+	destination "Earth"
+
+	on complete
+		"reputation: Republic" += 10
+		dialog
+			`As you land on the same fancy parlimentary pad as previously, you a met by Lady Bucksworth, Baron Gjian and Mr. Gjian. They are all very pleased to see you and wishes you well on your future adventures.`
+
+	on offer
+		require "Brig"
+		conversation
+			`As soon as you enter the Spaceport, you find mr. Skverk sitting at a tall table, drinking some form of fluorescent concoction. You go sit down on a chair next to him.`
+			choice
+				`	"Nice to see you again mr. Skverk."`
+					goto skverk
+
+			label skverk
+			`	"Captain <last>?" he responds with a big smile. I am so happy to see you. His Highness hasn't stopped talking about you. Are you on the market for a job?`
+			choice
+				`	"I am."`
+					goto iam
+				`	"Not really. I just wanted to say hello, when I heard your name."`
+					goto notreally
+
+			label iam
+			`	"Good. Good." he says. "We need you to go to Norn again, and pick up some cargo. Don't worry - it is not those pesky eel spawn. Rather it is a refined product of them and a prisoner. You see the scientists you transported here, have learned that a very dangerous man - known as mr. Hinrek to some - found a way to extract a highly explosive component from gene-modified grolgian eels. The details were described in the documents you transported to Mars, and the eel you transported to Norn was a part of a larger setup, to capture this man. And it succeded. We now need a steady hand to go to Norn and pick up the man and the explosives. You will be accompagnied by me and three members of the Parlimentary security force. We hope to accomplish this task as discreetly as possible, which is why we value your service. Unfortunately this is very off the book, so we can't pay you anything, but it will put you in a positive stance with the Republic.`
+			choice
+				`	"It is always nice to be liked, so I'll do it."`
+					accept
+				`	"Sorry. I really need the money right now.`
+					decline
+
+			label notreally
+			`	You say goodbye to mr. Skverk and go look for something else to transport in space.`
+				decline
+
+	on stopover
+		conversation
+			`As you get near Norn, the leader of the security force, contacts someone and afterwards provide you with an alternative landing site. When you land the cargo and the prisoner is ready and loading, refuelling and quick maintenance takes less than 15 minutes.`
+			choice
+				`	"Let's get back into space!"`
+					launch
+

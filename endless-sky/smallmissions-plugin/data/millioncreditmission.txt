@@ -1,0 +1,103 @@
+mission "MCM"
+	name "Million Credit Mission"
+	description "Transport something to <planet>"
+	landing
+	cargo "Dangerous snakes" 2
+	illegal 75000 "These snakes are on just about any ban list everywhere. You shouldn't be transporting them! JUST SAY NO!"
+	source
+		near "Sol" 3 5
+	destination 
+		planet "Earth"
+	to offer
+		credits < 275000
+	on offer
+		dialog
+			`"Do you WANT to earn ONE MILLION CREDITS? It's almost not illegal. And it is just around the corner. On planet <planet>. Plus the fine is only like 75,000 credits or something if you get caught. No problem. You'll get A MILLION CREDITS. And the <system> system is not far from here anyway. You can do it. I have complete trust in you. It's perfectly okay. You have a nice ship and I am sure it is up for the task. Just as its awesome captain..." The voice goes on ... and on ... and on... And you actually have no idea what the fork it is he is talking about, but you are considering taking the job - if nothing else just to get the guy to quiet up...`
+	on complete
+		payment 1000000
+		dialog
+			`A one-eyed man with a dark coat and a big hat on, comes to your ship, asks for the crates with snakes (which you are happy to get off your ship) and gives you a gold-plated credit chip.`
+
+mission "Long haul 1A"
+	name "Long haul to the <system> for 100,000 credits"
+	description "Transport an elephant family to <planet> for 100,000 credits"
+	job
+	cargo "Elephant family" 9
+	source
+		near "Sheratan" 2
+	destination 
+		near "Hadar" 2
+	on complete
+		payment 100000
+		dialog
+			`You unload the elephant family and wonder if you should invest in a cleaning company for your cargo spaces - in the end you decide to clean them yourself...`
+
+mission "Long haul 1B"
+	name "Long haul to the <system> for 100,000 credits"
+	description "Transport a shipment of seasonal spices to <planet> for 100,000 credits"
+	job
+	cargo "Seasonal spices" 15
+	source
+		near "Sheratan" 2
+	destination 
+		near "Alheka" 2
+	on complete
+		payment 100000
+		dialog
+			`After unloading the spices, your cargo hold smells of Christmas, Klakkarhg and Sibaneese Color Festival at the same time - you decide that you actually like this scented cargo hold...`
+
+mission "Long haul 2A"
+	name "Long haul to the <system> for 100,000 credits"
+	description "Transport a shipment of mobile homes to <planet> for 100,000 credits"
+	job
+	cargo "Mobile homes" 12
+	source
+		near "Hadar" 2
+	destination 
+		near "Sheratan" 2
+	on complete
+		payment 100000
+		dialog
+			`After having unloaded the mobile homes, you wonder if you should re-decorate your ship's cabin - in the end you decide to just get new curtains...`
+
+mission "Long haul 2B"
+	name "Long haul to the <system> for 100,000 credits"
+	description "Transport a shipment of glass beads to <planet> for 100,000 credits"
+	job
+	cargo "Glass beads" 9
+	source
+		near "Hadar" 2
+	destination 
+		near "Alheka" 2
+	on complete
+		payment 100000
+		dialog
+			`After unloading glass beads you find a handfull or so lying loosely in the cargo hold - you pick them up and put them in your pocket as they look quite nice...`
+
+mission "Long haul 3A"
+	name "Long haul to the <system> for 100,000 credits"
+	description "Transport books to <planet> for 100,000 credits"
+	job
+	cargo "Books" 11
+	source
+		near "Alheka" 2
+	destination 
+		near "Sheratan" 2
+	on complete
+		payment 100000
+		dialog
+			`After all the books have been unloaded you wonder what they were all about - but then you remember that they are now streaming your favority TV-show, "The Family on The Funky Planet" so you go watch that...`
+
+mission "Long haul 3B"
+	name "Long haul to the <system> for 100,000 credits"
+	description "Transport a shipment of cleaning products to <planet> for 100,000 credits"
+	job
+	cargo "Cleaning products" 7
+	source
+		near "Alheka" 2
+	destination 
+		near "Hadar" 2
+	on complete
+		payment 100000
+		dialog
+			`After unloading the cleaning products, your cargo hold smells sterile - like on a really clean hospital. Well maybe it will be easier to get your next job with the cargo hold smelling like this...`
